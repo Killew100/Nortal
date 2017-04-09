@@ -1,0 +1,113 @@
+// * * * * *
+// Project name: CAT
+// SCSS by: Timo Mitt timo.mitt@nortal.com
+// Project started: 05.12.2016
+// * * * * *
+
+
+// Content
+//------------------------------------------------//
+
+// main__content
+
+.main__content {
+	position: relative;
+	min-height: 100%;
+}
+
+// main__content, main__content_sidebar
+
+.main__content,
+.main__content__sidebar {
+	padding-top: floor($spacing-unit-base * 2.5);
+	padding-bottom: floor($spacing-unit-base * 2.5);
+	.container-fluid {
+		padding-right: $spacing-unit-base * 2;
+		padding-left: $spacing-unit-base * 2;
+	}
+}
+
+// Main__content__head
+
+.main__content__head {
+	display: block;
+	margin-bottom: $spacing-unit-base * 3;
+}
+
+// Main__content__title
+
+.main__content__title {
+	display: inline-block;
+	margin: 0 $spacing-unit-base 5px 0;
+	font-family: $font-aktiv;
+	font-size: 30px;
+	vertical-align: middle;
+	.btn {
+		margin-left: 10px;
+	}
+}
+
+.main__content__btn-group,
+.main__content__head__addition {
+	display: inline-block;
+	margin-top: -5px;
+	margin-bottom: 5px;
+	vertical-align: top;
+}
+.main__content__btn-group {
+	> .form-control {
+		width: auto;
+	}
+	> .form-control,
+	> .btn {
+		display: inline-block;
+		vertical-align: middle;
+		+ .form-control,
+		+ .btn {
+			margin-left: 5px;
+		}
+	}
+}
+.main__content__head__addition {
+	float: right;
+	&:not(:first-child) {
+		margin-left: 4px;
+	}
+}
+
+
+// Sidebar
+//------------------------------------------------//
+
+.main__content__sidebar {
+	position: absolute;
+	top: 0;
+	right: 0;
+	min-height: 100%;
+	background: lighten($grayish, 15%);
+}
+
+.main__content__sidebar__head {
+	margin-top: 16px;
+	margin-bottom: 12px;
+}
+
+.main__content__sidebar__title {
+	margin: 0;
+	font-family: $font-aktiv;
+	font-size: 21px;
+}
+
+
+
+// Mobile
+//------------------------------------------------//
+
+@media only screen and (max-width: $screen-xs-max) {
+	.main__content {
+		.container-fluid {
+			padding-right: $spacing-unit-base;
+			padding-left: $spacing-unit-base;
+		}
+	}
+}

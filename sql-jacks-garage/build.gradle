@@ -1,0 +1,120 @@
+version '1.0'
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'com.nortal.assignment.ResearchRunner'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+configurations {
+    database
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.hsqldb:hsqldb:2.3.4'
+    compile 'commons-dbutils:commons-dbutils:1.6'
+    compile 'org.slf4j:slf4j-simple:1.7.14'
+
+    database 'org.hsqldb:hsqldb:2.3.4'
+    database 'org.liquibase:liquibase-core:3.5.3'
+
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+ext.assignmentTasksGroup = 'Nortal Assignment'
+ext.dbPort = '9001'
+ext.dbUrl = 'jdbc:hsqldb:hsql://localhost:' + dbPort + '/'
+ext.dbDriver = 'org.hsqldb.jdbcDriver'
+ext.dbName = 'garage'
+ext.dbFilesPath = 'db/' + dbName
+
+ext.dbUser = 'sa'
+ext.dbPassword = ''
+
+task startDb {
+    group = assignmentTasksGroup
+    description = "Run HSQLDB database server on port " + dbPort + ". Database will be created to dir: " + file('db')
+    doLast {
+        println " "
+        println "Starting database server."
+        println "Message such as 'HSQLDB server 2.3.4 is online on port 9001' indicates server has started"
+        println "This command does not exit automatically"
+        println " "
+        def exit = javaexec {
+            classpath configurations.database
+            setMain "org.hsqldb.Server"
+            args '-port'
+            args dbPort
+            args '-database.0'
+            args 'file:' + dbFilesPath
+            args '-dbname.0'
+        }
+        println "return value: ${exit.exitValue}"
+    }
+}
+
+task cleanDb(type: Delete) {
+    doFirst {
+        def dbLock = new File(dbFilesPath + '.lck')
+        println "Database is running if " + dbLock + " is present"
+        while (dbLock.exists()) {
+            println "Database process still running. Waiting for 3s"
+            sleep(3 * 1000)
+        }
+        println "Database shut down. Cleaning up..."
+    }
+    group = assignmentTasksGroup
+    description = "Delete generated database files. Reverts database back to initial state."
+    delete 'db/'
+}
+
+
+task startDbManager {
+    group = assignmentTasksGroup
+    description = "Start graphical DB Manager tool"
+    doLast {
+        def exit = javaexec {
+            classpath configurations.database
+            setMain "org.hsqldb.util.DatabaseManagerSwing"
+            args '-url'
+            args dbUrl
+            args '-driver'
+            args dbDriver
+        }
+        println "return value: ${exit.exitValue}"
+    }
+}
+
+task updateDb(type: JavaExec) {
+    doFirst {
+        println " "
+        println "Applying changes to the database. This may take some time..."
+        println "This command should exit automatically"
+        println " "
+    }
+    group = assignmentTasksGroup
+    description = "Execute database propagation scripts from src/main/resources/db"
+    classpath configurations.database
+    main = "liquibase.integration.commandline.Main"
+    //args "--defaultsFile=liquibase.properties"
+    args "--url=$dbUrl"
+    args "--driver=$dbDriver"
+    args "--classpath=src/main/resources"
+    args "--changeLogFile=/db/changelog-master.xml"
+    args "--username=$dbUser"
+    args "--password=$dbPassword"
+    args "--logLevel=info"
+    args "update"
+}
+
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.4'
+}
+

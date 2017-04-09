@@ -1,0 +1,109 @@
+// * * * * *
+// Project name: CAT
+// SCSS by: Timo Mitt timo.mitt@nortal.com
+// Project started: 05.12.2016
+// * * * * *
+//
+// Aktiv Grotesk shame / hackish solutions
+//
+// aktiv-grotesk font has some weird alignment issues
+// this file is used to align aktiv-grotesk font to the middle (by default it has some weird top align)
+// remove this file if the font is fixed or replaced
+//
+
+
+// HEADER
+//------------------------------------------------//
+
+.main__header__heading {
+	margin: 3px 0 -5px;
+}
+
+.main__header__user__name {
+	margin: 0 0 -4px;
+}
+
+// CONTENT
+//------------------------------------------------//
+
+// Main__content_head
+
+.main__content__head {
+	margin-top: 16px;
+	margin-bottom: 26px;
+}
+// .main__content__head__addition {
+// 	margin-top: -8px;
+// }
+
+// Main__content__title
+
+.main__content__title {
+	font-size: 29px;
+	margin-top: 2px;
+}
+
+// CARDS
+//------------------------------------------------//
+
+// Main__card
+
+.main__card__body {
+	padding-top: 23px;
+}
+.main__card__title {
+	margin: 0 0 13px;
+}
+
+// PANELS
+//------------------------------------------------//
+
+// Main panels
+
+.panel-group-main {
+	.panel-title > a {
+		padding-top: 23px;
+		padding-bottom: 17px;
+	}
+	.panel-body {
+		margin-top: -4px;
+	}
+}
+.panel-group-main__btn-group {
+	top: 14px;
+}
+
+// Nested panels
+
+.panel-group-main-nested {
+	.panel-title > a {
+		padding-top: 18px;
+	}
+}
+.panel-group-main-nested__level {
+	line-height: 26px;
+}
+.panel-group-main-nested__heading {
+	margin-top: 2px;
+	margin-bottom: -2px;
+}
+.panel-group-main-nested__icon {
+	margin-top: -8px;
+}
+
+
+// TABLE
+//------------------------------------------------//
+
+.table {
+	tbody {
+		> tr {
+			&.table__title-row {
+				> th, > td {
+					padding-top: $table-cell-padding + 2;
+					padding-bottom: $table-cell-padding - 2;
+				}
+			}
+		}
+	}
+}

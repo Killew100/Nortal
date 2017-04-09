@@ -1,0 +1,41 @@
+// * * * * *
+// Project name: CAT
+// SCSS by: Timo Mitt timo.mitt@nortal.com
+// Project started: 05.12.2016
+// * * * * *
+
+
+// Helpers
+//------------------------------------------------//
+
+// ng-cloak styles in order to prevent flickering on load
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+// Capitalize
+.text-capitalize {
+	text-transform: capitalize !important;
+}
+
+// No animations
+.no-animation {
+	.panel-group-main__heading:after,
+	.panel-collapse.collapsing,
+	.toggle-group {
+		transition: none !important;
+	}
+}
+
+// Offset--left
+.offset--left {
+	transform: translateX(2px) !important;
+	&-xl {
+		transform: translateX(5px) !important;
+	}
+}
+
+.offset--bottom {
+	margin-bottom: 5px !important;
+}

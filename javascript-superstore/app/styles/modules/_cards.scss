@@ -1,0 +1,48 @@
+// * * * * *
+// Project name: CAT
+// SCSS by: Timo Mitt timo.mitt@nortal.com
+// Project started: 05.12.2016
+// * * * * *
+
+
+// Main cards
+//------------------------------------------------//
+
+.main__card {
+	display: block;
+	width: 100%;
+	margin-bottom: $spacing-unit-base;
+	border-radius: $border-radius-base;
+	box-shadow: $box-shadow-light;
+}
+.main__card__body {
+	height: 250px;
+	padding: 20px 19px 15px;
+	border-top-left-radius: $border-radius-base;
+	border-top-right-radius: $border-radius-base;
+	overflow-y: hidden;
+	background: #fff;
+}
+.main__card__title {
+	margin: 0 0 16px;
+	font-size: $font-size-large + 2;
+	font-weight: bold;
+}
+.main__card__info {
+	color: $gray;
+}
+.main__card__footer {
+	padding: 9px 19px;
+	background: lighten($gray-lighter,2%);
+	border-bottom-right-radius: $border-radius-base;
+	border-bottom-left-radius: $border-radius-base;
+	p {
+		margin: 7px 0;
+		color: $grayish;
+		font-weight: bold;
+		white-space: nowrap;
+	}
+	.btn:not(.btn-submit) {
+		float: right;
+	}
+}

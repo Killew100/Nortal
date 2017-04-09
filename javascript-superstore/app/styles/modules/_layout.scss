@@ -1,0 +1,90 @@
+// * * * * *
+// Project name: CAT
+// SCSS by: Timo Mitt timo.mitt@nortal.com
+// Project started: 05.12.2016
+// * * * * *
+
+
+// Layout
+//------------------------------------------------//
+
+// Wrapper
+
+.wrapper {
+	display: inline-block;
+	position: relative;
+	width: 100%;
+	height: 96%;
+	height: calc(100% - #{$footer-height});
+	&.full-height {
+		height: 100%;
+	}
+	&.has-scroll {
+		overflow-y: auto;
+	}
+}
+
+// Main content
+
+.main {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 88%;
+	width: calc(100% - #{$navbar-width});
+	height: 100%;
+	overflow: hidden;
+}
+
+.main__area {
+	width: 100%;
+	height: 92%;
+	height: calc(100% - #{$header-height});
+	overflow-x: hidden;
+	overflow-y: auto;
+	// .main__area--scrollable
+	&--scrollable {
+		overflow: scroll;
+	}
+}
+
+// Sidebar layout
+
+.main__content--has-sidebar {
+	.main__content__primary {
+		width: 65%;
+		width: calc(100% - #{$sidebar-width});
+	}
+	.main__content__sidebar {
+		width: 35%;
+		width: calc(#{$sidebar-width});
+	}
+}
+
+
+
+// Mobile
+//------------------------------------------------//
+
+@media only screen and (max-width: $screen-xs-max) {
+	.main {
+		width: 100%;
+	}
+	.main__area {
+		$temp: $header-height-mobile * 2;
+		height: 94%;
+		height: calc(100% - #{$temp});
+		margin-top: $header-height-mobile;
+	}
+	.main__content--has-sidebar {
+		padding-bottom: 0;
+		.main__content__primary,
+		.main__content__sidebar {
+			width: 100%;
+		}
+		.main__content__sidebar {
+			position: relative;
+			margin-top: $spacing-unit-base * 3;
+		}
+	}
+}

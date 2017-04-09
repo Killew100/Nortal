@@ -1,0 +1,130 @@
+// * * * * *
+// Project name: CAT
+// SCSS by: Timo Mitt timo.mitt@nortal.com
+// Project started: 05.12.2016
+// * * * * *
+
+
+// Buttons
+//------------------------------------------------//
+
+// Btn
+.btn {
+	font-family: $font-open-sans;
+}
+
+// Btn-link
+.btn-link {
+	font-weight: bold;
+}
+
+// Btn-lg
+.btn-lg {
+	padding: 10px 16px;
+	border-radius: $border-radius-base;
+	font-size: $font-size-base + 1;
+	line-height: $line-height-base;
+}
+
+.btn-no-hover {
+	background: $brand-primary !important;
+	border-color: $brand-primary !important;
+}
+
+
+// Toggle buttons
+//------------------------------------------------//
+
+.checkbox label .toggle,
+.checkbox-inline .toggle {
+	margin-right: 5px;
+	margin-left: -20px;
+}
+.toggle {
+	position: relative;
+	overflow: hidden;
+	&.off {
+		.toggle-group {
+			left: -100%;
+		}
+	}
+	&.btn {
+		min-height: 30px;
+		min-width: 130px;
+	}
+}
+.toggle-group {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 200%;
+	transition: left $anim-duration;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+}
+.toggle-on,
+.toggle-off {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: 0;
+	border: 0;
+	border-radius: 0;
+}
+.toggle-on {
+	right: 50%;
+	left: 0;
+}
+.toggle-off {
+	right: 0;
+	left: 50%;
+}
+.toggle-handle {
+	position: relative;
+	width: 0px;
+	height: 100%;
+	margin: 0 auto;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	border-width: 0 1px;
+}
+.toggle-on.btn {
+	padding-right: 24px;
+}
+.toggle-off.btn {
+	padding-left: 24px;
+}
+.toggle.btn-lg {
+	min-width: 79px;
+	min-height: 45px;
+}
+.toggle-on.btn-lg {
+	padding-right: 31px;
+}
+.toggle-off.btn-lg {
+	padding-left: 31px;
+}
+.toggle-handle.btn-lg {
+	width: 40px;
+}
+.toggle.btn-sm {
+	min-width: 50px;
+	min-height: 30px;
+}
+.toggle-on.btn-sm {
+	padding-right: 20px;
+}
+.toggle-off.btn-sm {
+	padding-left: 20px;
+}
+.toggle.btn-xs {
+	min-width: 35px;
+	min-height: 22px;
+}
+.toggle-on.btn-xs {
+	padding-right: 12px;
+}
+.toggle-off.btn-xs {
+	padding-left: 12px;
+}

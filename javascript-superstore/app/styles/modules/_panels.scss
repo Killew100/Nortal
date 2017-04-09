@@ -1,0 +1,420 @@
+// * * * * *
+// Project name: CAT
+// SCSS by: Timo Mitt timo.mitt@nortal.com
+// Project started: 05.12.2016
+// * * * * *
+
+
+// Panel default
+//------------------------------------------------//
+
+// Panel-default (BS)
+
+.panel-default,
+.panel-level {
+	border: none;
+	box-shadow: $box-shadow-light;
+	.panel-heading {
+		padding: 0;
+	}
+	.panel-title {
+		a {
+			display: block;
+		}
+	}
+}
+
+.panel-group {
+	margin-bottom: 0;
+}
+
+.panel-body {
+	p {
+		word-wrap: break-word;
+	}
+}
+
+// Overriding animation
+
+.panel-collapse {
+	&.collapsing {
+		transition-timing-function: $anim-timing-fn !important;
+		transition-duration: $anim-duration-long;
+	}
+}
+
+
+// Panel transparent
+//------------------------------------------------//
+
+.panel.panel-transparent {
+	border: none;
+	border-radius: 0;
+	background: none;
+	box-shadow: none;
+	.panel-heading + .panel-collapse > .panel-body {
+		border-top: none;
+	}
+}
+
+
+// Panel group filter
+//------------------------------------------------//
+
+.panel-group-filter {
+	.panel {
+		.panel-heading {
+			display: none;
+			+ .panel-collapse > .panel-body {
+				margin-bottom: $spacing-unit-base * 2;
+				padding-right: 0;
+				padding-left: 0;
+			}
+		}
+	}
+}
+
+
+
+// Panel group main
+//------------------------------------------------//
+
+.panel-group-main {
+	.panel + .panel {
+		margin-top: $spacing-unit-base + 2px;
+	}
+	.panel-heading {
+		border-radius: 3px;
+		background-color: transparent;
+		+ .panel-collapse > .panel-body {
+			border-top: none;
+		}
+	}
+	.panel-title {
+		color: $text-color;
+		font-size: $font-size-large + 2;
+		font-weight: bold;
+		a {
+			padding: 15px 24px;
+			text-decoration: none;
+			outline: none;
+		}
+	}
+	.panel-body {
+		padding: 0;
+	}
+	.panel-footer {
+		padding-right: 24px;
+		padding-left: 24px;
+		background: lighten($gray-lighter,2%);
+		color: $grayish;
+		font-weight: bold;
+		p {
+			margin: 7px 0;
+			i {
+				margin-right: 6px;
+			}
+		}
+	}
+}
+
+.panel-group-main__heading {
+	display: inline-block;
+	position: relative;
+}
+
+.panel-group-main__sub-heading {
+	margin-top: 18px;
+	padding-right: 24px;
+	padding-left: 24px;
+	font-size: $font-size-large + 2;
+	font-weight: normal;
+}
+.panel-group-main__status {
+	display: inline-block;
+	padding: 0 7px 0 3px;
+	font-size: $font-size-icon;
+	vertical-align: middle;
+}
+.panel-group-main__btn-group {
+	position: absolute;
+	top: 9px;
+	right: 9px;
+	.btn-link {
+		text-decoration: none;
+		i {
+			margin-left: 4px;
+		}
+		&:focus {
+			outline: none;
+		}
+	}
+}
+.panel-group-main__notification {
+	float: right;
+	color: $grayish;
+	font-family: $font-open-sans;
+	font-size: $font-size-base - 1;
+	vertical-align: middle;
+	i {
+		margin-right: 2px;
+	}
+}
+
+
+//.panel-group-main__info-list,
+.panel-group-main__info {
+	padding-right: 24px;
+	padding-left: 24px;
+	color: $gray;
+	white-space: pre-line;
+	&:last-child {
+		padding-bottom: 30px;
+	}
+}
+// .panel-group-main__info-list {
+// 	list-style: none;
+// 	li {
+// 		padding-left: 1.6em;
+// 		&:before {
+// 			position: absolute;
+// 			width: 4px;
+// 			height: 4px;
+// 			margin-top: .55em;
+// 			margin-left: -1.1em;
+// 			border-radius: 100%;
+// 			content: "";
+// 			background-color: $grayish;
+// 		}
+// 	}
+// }
+
+
+
+// Panel group toggle
+//------------------------------------------------//
+
+.panel-group-toggle-indicator {
+	.panel-group-main__heading {
+		margin-left: -($spacing-unit-base * .5);
+		padding-left: $spacing-unit-base * .5;
+	}
+	.panel {
+		.panel-group-main__heading:after {
+			position: absolute;
+			top: 50%;
+			left: -$spacing-unit-base;
+			height: 0px;
+			margin-top: -3px;
+			content: "\f107";
+			color: $grayish;
+			font-family: FontAwesome;
+			font-size: $font-size-icon;
+			line-height: 0;
+			transition: all $anim-duration ease-in;
+		}
+		&.panel-open {
+			.panel-group-main__heading:after {
+				transform: rotate(-180deg);
+			}
+		}
+		&.locked {
+			.panel-group-main__heading:after {
+				color: #fff;
+			}
+		}
+	}
+}
+
+
+
+// Panels group with levels
+//------------------------------------------------//
+
+.panel-group-levels {
+	.panel-group {
+		width: 95%;
+		width: calc(100% - 70px);
+		margin-left: 5%;
+		margin-left: calc(70px);
+	}
+}
+
+.panel-level {
+	position: relative;
+	.panel-title {
+		&:before {
+			position: absolute;
+			top: 12px;
+			left: -62px;
+			width: 34px;
+			height: 34px;
+			border-radius: 100%;
+			content: "";
+		}
+		&:after {
+			position: absolute;
+			top: 14px;
+			left: -60px;
+			width: 30px;
+			height: 30px;
+			border-radius: 100%;
+			content: "\f00c";
+			background: $gray-lighter;
+			font-family: FontAwesome;
+			font-size: $font-size-base;
+			line-height: 30px;
+			text-align: center;
+		}
+		> a {
+			&:before,
+			&:after {
+				position: absolute;
+				top: 22px;
+				border-width: 7px 9px 7px 0;
+				border-style: solid;
+				content: "";
+			}
+			&:before {
+				left: -8px;
+				z-index: 7;
+				border-color: transparent #fff;
+			}
+			&:after {
+				left: -9px;
+				z-index: 6;
+				border-color: transparent darken($gray-lighter, 4%);
+			}
+		}
+	}
+	// Panel level completed
+	&.completed {
+		.panel-title {
+			&:after {
+				background: transparent;
+				color: #fff;
+			}
+		}
+	}
+	// Panel level locked
+	&.locked {
+		background: $grayish;
+		.panel-title {
+			&:before {
+				background: $grayish;
+			}
+			&:after {
+				content: "\f023";
+				background: transparent;
+				color: #fff;
+			}
+			a {
+				&:before {
+					border-color: transparent $grayish;
+				}
+			}
+		}
+		.panel-title,
+		.panel-group-main__info,
+		.panel-group-main__info-list,
+		.panel-group-main__notification,
+		.panel-group-main__btn-group .btn-link {
+			color: #fff;
+		}
+		.panel-group-main__info-list li:before {
+			background-color: $gray-lighter;
+		}
+	}
+}
+// Panel line (connector)
+.panel-level:not(:last-child) {
+	&:before {
+		position: absolute;
+		width: 2px;
+		height: 100%;
+		margin-top: 42px;
+		margin-left: -46px;
+		content: "";
+		background-color: $grayish;
+	}
+}
+// Panel color levels
+@include panel-levels($panel-level-colors);
+
+.panel-level {
+	&.targeted {
+		.panel-group-main__status {
+			color: $brand-warning;
+		}
+	}
+}
+
+
+
+// Nested panels
+//------------------------------------------------//
+
+.panel-group-main-nested {
+	.panel-group {
+		margin: 0;
+	}
+	.panel-default {
+		border-top: 1px solid $grayish;
+		border-radius: 0;
+		box-shadow: none;
+	}
+	.panel + .panel {
+		margin-top: 0;
+	}
+	.panel-heading {
+		position: relative;
+		border-radius: 0;
+	}
+	.panel-title {
+		color: $grayish;
+		font-size: $font-size-base;
+		font-weight: 600;
+		a {
+			padding: 13px 52px;
+		}
+	}
+	.panel-open {
+		background: lighten($gray-lighter,2%);
+		.panel-title {
+			color: $text-color;
+		}
+	}
+}
+
+.panel-group-main-nested__level,
+.panel-group-main-nested__heading {
+	display: inline-block;
+	vertical-align: middle;
+}
+.panel-group-main-nested__level {
+	position: absolute;
+	top: 50%;
+	width: 23px;
+	height: 23px;
+	margin-top: -12px;
+	margin-left: -27px;
+	border-radius: $border-radius-base;
+	background: $grayish;
+	color: #fff;
+	line-height: 24px;
+	text-align: center;
+}
+.panel-group-main-nested__heading {
+	//
+}
+.panel-group-main-nested__icon {
+	position: absolute;
+	top: 50%;
+	right: 24px;
+	margin-top: -6px;
+	color: $brand-warning;
+	font-size: $font-size-icon;
+}
+.panel-group-main-nested__info {
+	padding: 0 52px 30px;
+}

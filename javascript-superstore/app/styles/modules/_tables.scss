@@ -1,0 +1,138 @@
+// * * * * *
+// Project name: CAT
+// SCSS by: Timo Mitt timo.mitt@nortal.com
+// Project started: 05.12.2016
+// * * * * *
+
+
+// Tables
+//------------------------------------------------//
+
+.table {
+	width: auto;
+	box-shadow: $box-shadow-light;
+	thead,
+	tbody,
+	tfoot {
+		> tr {
+			> th, > td {
+				vertical-align: middle;
+				text-align: left;
+				&:first-child {
+					border-left: none;
+				}
+				&:last-child {
+					border-right: none;
+				}
+			}
+		}
+	}
+	thead {
+		> tr {
+			> th {
+				padding-top: $table-cell-padding + 2;
+				padding-bottom: $table-cell-padding + 2;
+				border-color: $brand-primary;
+				background: $brand-primary;
+				color: #fff;
+				font-weight: normal;
+				&.active {
+					position: relative;
+					border-color: $text-color;
+					background: $text-color;
+					font-size: $font-size-base + 2;
+					font-weight: bold;
+					&:before {
+						position: absolute;
+						top: 0;
+						left: -1px;
+						width: 1px;
+						height: 101%;
+						height: calc(100% + 2px);
+						content: "";
+						background: $text-color;
+					}
+				}
+			}
+		}
+	}
+	tbody {
+		> tr {
+			> td, > th {
+				height: 43px;
+				color: $gray;
+			}
+			> td {
+				font-size: $font-size-base;
+				&.active {
+					color: $text-color;
+					font-size: $font-size-large;
+				}
+				.fa {
+					margin-left: floor($spacing-unit-base * .5);
+				}
+				.fa-star {
+					color: $brand-warning;
+				}
+			}
+			> th {
+				font-weight: normal;
+			}
+			&.table__title-row {
+				> th {
+					color: $text-color;
+					font-family: $font-aktiv;
+					font-size: $font-size-large + 2;
+					font-weight: bold;
+				}
+				> th, > td {
+					background: $table-bg-hover;
+				}
+			}
+			&:last-child {
+				> th, > td {
+					border-bottom: none;
+				}
+			}
+			&.input-row {
+				> td {
+					padding: 1px 3px;
+				}
+			}
+		}
+	}
+}
+
+.table-bordered {
+	border: none;
+}
+
+.table-sortable {
+	thead {
+		> tr {
+			> th {
+				padding-left: 20px;
+				position: relative;
+				cursor: pointer;
+				i {
+					position: absolute;
+					left: 6px;
+					top: 50%;
+					margin-top: -6px;
+					&.fa-sort-desc {
+						margin-top: -9px;
+					}
+					&.fa-sort-asc {
+						margin-top: -3px;
+					}
+				}
+			}
+		}
+	}
+}
+
+.pagination {
+	a {
+		cursor: pointer;
+	}
+}

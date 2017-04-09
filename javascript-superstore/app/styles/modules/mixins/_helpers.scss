@@ -1,0 +1,29 @@
+// * * * * *
+// Project name: CAT
+// SCSS by: Timo Mitt timo.mitt@nortal.com
+// Project started: 05.12.2016
+// * * * * *
+
+
+// Mixins.Helpers
+//------------------------------------------------//
+
+// Build hover and focus in one go
+
+@mixin hocus() {
+	&:hover,
+	&:focus {
+		@content;
+	}
+}
+
+// Make element not selectable / highlightable
+
+@mixin no-select() {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-khtml-user-select: none;
+	-webkit-touch-callout: none;
+}

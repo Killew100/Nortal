@@ -1,0 +1,28 @@
+<div class="nav-sidebar">
+	<h1 class="sr-only">Menu</h1>
+	<!-- Logo -->
+	<div class="nav-sidebar__logo">
+		<a data-ui-sref="default.accounts" data-ui-sref-opts="{reload: true, notify: true}">
+			<img alt="Nortal">
+		</a>
+	</div>
+	<!-- Button to toggle menu in mobile -->
+	<button type="button" class="nav-sidebar__toggle" data-ng-click="vm.collapsed = !vm.collapsed">
+		<i class="fa" data-ng-class="{'fa-close': !vm.collapsed, 'fa-bars': vm.collapsed}"></i>
+		<span class="sr-only">Toggle menu</span>
+	</button>
+	<!-- Navigation -->
+	<div class="collapse navbar-collapse" data-uib-collapse="vm.collapsed">
+		<ul class="nav-sidebar__navs">
+			<li class="nav-sidebar__item" data-ui-sref-active="active">
+				<a class="nav-sidebar__link nav-sidebar__link--large" data-ui-sref="default.accounts">Accounts</a>
+			</li>
+			<li class="nav-sidebar__item" data-ui-sref-active="active">
+				<a class="nav-sidebar__link offset--left" data-ui-sref="default.history">Purchase history</a>
+			</li>
+			<li class="nav-sidebar__item" data-ui-sref-active="active">
+				<a class="nav-sidebar__link nav-sidebar__link--small" data-ui-sref="default.settings">Settings</a>
+			</li>
+		</ul>
+	</div>
+</div>

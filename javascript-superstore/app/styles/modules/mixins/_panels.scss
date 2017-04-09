@@ -1,0 +1,40 @@
+// * * * * *
+// Project name: CAT
+// SCSS by: Timo Mitt timo.mitt@nortal.com
+// Project started: 05.12.2016
+// * * * * *
+
+
+// Mixins.Panels
+//------------------------------------------------//
+
+// Build panel-level colors
+
+@mixin panel-levels($colors) {
+	$len: length($colors);
+	@for $i from 1 through $len {
+		.panel-level--#{$i} {
+			&.completed {
+				@if $i < $len {
+					&:before {
+						@include gradient-vertical( darken(nth($colors, $i), 2%), lighten(nth($colors, $i + 1), 2%));
+					}
+				}
+				.panel-group-main__status {
+					color: nth($colors, $i);
+				}
+			}
+			.panel-title {
+				&:before {
+					@include gradient-vertical( lighten(nth($colors, $i), 5%), darken(nth($colors, $i), 5%) );
+				}
+				&:after {
+					color: nth($colors, $i);
+				}
+			}
+			.panel-group-main-nested__level {
+				@include gradient-vertical( lighten(nth($colors, $i), 5%), darken(nth($colors, $i), 5%) );
+			}
+		}
+	}
+}

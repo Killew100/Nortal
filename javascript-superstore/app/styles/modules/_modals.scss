@@ -1,0 +1,72 @@
+// * * * * *
+// Project name: CAT
+// SCSS by: Timo Mitt timo.mitt@nortal.com
+// Project started: 05.12.2016
+// * * * * *
+
+//
+// Basic modal
+// (for small feedback and user actions)
+//------------------------------------------------/
+.modal-basic {
+	white-space: nowrap;
+	&:before {
+		display: inline-block;
+		width: 50%;
+		height: 100%;
+		content: "";
+		vertical-align: middle;
+	}
+	.modal-dialog {
+		margin: 0;
+		display: inline-block;
+		white-space: normal;
+		width: auto;
+		vertical-align: middle;
+		max-width: 600px;
+		transform: translate(-50%) !important;
+	}
+	.modal-content {
+		padding: ($spacing-unit-base * 2);
+	}
+}
+.modal-basic__header {
+	h1 {
+		margin: 0;
+		font-size: $font-size-large + 5;
+		font-family: $font-aktiv;
+		padding-right: $spacing-unit-base * 2;
+	}
+}
+.modal-basic__close {
+	position: absolute;
+	top: 6px;
+	right: $spacing-unit-base;
+	padding: $spacing-unit-base;
+	color: lighten($gray, 15%);
+	i {
+		font-size: $font-size-icon;
+	}
+	&:hover,
+	&:focus {
+		border: none;
+		background: none;
+		color: $gray;
+		outline: none;
+	}
+}
+.modal-basic__body {
+	color: $gray-dark;
+	padding: $spacing-unit-base 0 0;
+	.row {
+		margin: 0;
+	}
+	p {
+		margin-bottom: $spacing-unit-base * 2;
+		font-size: $font-size-base + 1;
+	}
+}
+.modal-basic__footer {
+	text-align: center;
+	padding: ($spacing-unit-base * 2) 0 0;
+}

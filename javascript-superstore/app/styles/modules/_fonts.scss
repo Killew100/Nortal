@@ -1,0 +1,99 @@
+// * * * * *
+// Project name: CAT
+// SCSS by: Timo Mitt timo.mitt@nortal.com
+// Project started: 05.12.2016
+// * * * * *
+
+@charset "UTF-8";
+
+
+// Fonts
+//------------------------------------------------//
+
+// Open sans
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700");
+
+// Aktiv Grotesk
+
+/*@font-face {
+    font-family: 'Aktiv_grotesk';
+    src: url('../fonts/aktiv-grotesk/aktivgrotesk-webfont.woff2') format('woff2'),
+         url('../fonts/aktiv-grotesk/aktivgrotesk-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Aktiv_grotesk';
+    src: url('../fonts/aktiv-grotesk/aktivgrotesk_lt-webfont.woff2') format('woff2'),
+         url('../fonts/aktiv-grotesk/aktivgrotesk_lt-webfont.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Aktiv_grotesk';
+    src: url('../fonts/aktiv-grotesk/aktivgrotesk_rg-webfont.woff2') format('woff2'),
+         url('../fonts/aktiv-grotesk/aktivgrotesk_rg-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}*/
+
+@font-face {
+	font-family: "AktivGrotesk";
+	font-weight: 300;
+	font-style: normal;
+
+	src: url("../fonts/aktiv-grotesk/aktivgrotesk_lt-webfont.eot");
+	src: url("../fonts/aktiv-grotesk/aktivgrotesk_lt-webfont.eot?#iefix") format("embedded_opentype"),
+	url("../fonts/aktiv-grotesk/aktivgrotesk_lt-webfont.woff2") format("woff2"),
+	url("../fonts/aktiv-grotesk/aktivgrotesk_lt-webfont.woff") format("woff");
+}
+@font-face {
+	font-family: "AktivGrotesk";
+	font-weight: 300;
+	font-style: italic;
+
+	src: url("../fonts/aktiv-grotesk/aktivgrotesk_ltit-webfont.eot");
+	src: url("../fonts/aktiv-grotesk/aktivgrotesk_ltit-webfont.eot?#iefix") format("embedded_opentype"),
+	url("../fonts/aktiv-grotesk/aktivgrotesk_ltit-webfont.woff2") format("woff2"),
+	url("../fonts/aktiv-grotesk/aktivgrotesk_ltit-webfont.woff") format("woff");
+}
+@font-face {
+	font-family: "AktivGrotesk";
+	font-weight: normal;
+	font-style: normal;
+
+	src: url("../fonts/aktiv-grotesk/aktivgrotesk_rg-webfont.eot");
+	src: url("../fonts/aktiv-grotesk/aktivgrotesk_rg-webfont.eot?#iefix") format("embedded_opentype"),
+	url("../fonts/aktiv-grotesk/aktivgrotesk_rg-webfont.woff2") format("woff2"),
+	url("../fonts/aktiv-grotesk/aktivgrotesk_rg-webfont.woff") format("woff");
+}
+@font-face {
+	font-family: "AktivGrotesk";
+	font-weight: normal;
+	font-style: italic;
+
+	src: url("../fonts/aktiv-grotesk/aktivgrotesk_it-webfont.eot");
+	src: url("../fonts/aktiv-grotesk/aktivgrotesk_it-webfont.eot?#iefix") format("embedded_opentype"),
+	url("../fonts/aktiv-grotesk/aktivgrotesk_it-webfont.woff2") format("woff2"),
+	url("../fonts/aktiv-grotesk/aktivgrotesk_it-webfont.woff") format("woff");
+}
+@font-face {
+	font-family: "AktivGrotesk";
+	font-weight: bold;
+	font-style: normal;
+
+	src: url("../fonts/aktiv-grotesk/aktivgrotesk_bd-webfont.eot");
+	src: url("../fonts/aktiv-grotesk/aktivgrotesk_bd-webfont.eot?#iefix") format("embedded_opentype"),
+	url("../fonts/aktiv-grotesk/aktivgrotesk_bd-webfont.woff2") format("woff2"),
+	url("../fonts/aktiv-grotesk/aktivgrotesk_bd-webfont.woff") format("woff");
+}
+@font-face {
+	font-family: "AktivGrotesk";
+	font-weight: bold;
+	font-style: italic;
+
+	src: url("../fonts/aktiv-grotesk/aktivgrotesk_bdit-webfont.eot");
+	src: url("../fonts/aktiv-grotesk/aktivgrotesk_bdit-webfont.eot?#iefix") format("embedded_opentype"),
+	url("../fonts/aktiv-grotesk/aktivgrotesk_bdit-webfont.woff2") format("woff2"),
+	url("../fonts/aktiv-grotesk/aktivgrotesk_bdit-webfont.woff") format("woff");
+}

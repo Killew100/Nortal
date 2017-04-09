@@ -1,0 +1,206 @@
+// * * * * *
+// Project name: CAT
+// SCSS by: Timo Mitt timo.mitt@nortal.com
+// Project started: 05.12.2016
+// * * * * *
+
+
+// Header
+//------------------------------------------------//
+
+// Main header
+
+.main__header {
+	position: relative;
+	z-index: 100;
+	width: 100%;
+	height: $header-height;
+	padding: 0 $spacing-unit-base * 2;
+	background-color: #fff;
+	box-shadow: 0 1px 0 0 $gray-light;
+}
+
+// Logo
+
+.main__header__logo {
+	display: none;
+}
+
+// Main header title block
+
+.main__header__title {
+	float: left;
+	padding: 12px 0;
+}
+.main__header__heading {
+	display: block;
+	margin: 0 0 -2px;
+	font-family: $font-aktiv;
+	font-size: $font-size-large;
+	&::first-letter {
+		text-transform: uppercase;
+	}
+}
+.main__header__sub {
+	margin: 0;
+	color: $grayish;
+	font-size: $font-size-base - 1;
+	font-weight: bold;
+}
+
+// Main header user block
+
+.main__header__user {
+	float: right;
+	height: 100%;
+	padding: 0 12px;
+	border-width: 0 1px;
+	border-style: solid;
+	border-color: transparent;
+	@include no-select();
+	&.open {
+		border-color: $gray-light;
+	}
+}
+.main__header__user__wrapper {
+	display: block;
+	height: 100%;
+	padding-top: 12px;
+	cursor: pointer;
+}
+.main__header__user__image,
+.main__header__user__info,
+.main__header__user__settings {
+	display: inline-block;
+	vertical-align: middle;
+}
+.main__header__user__image {
+	width: 36px;
+	height: 36px;
+	border-radius: 100%;
+	background: $gray-lighter;
+	+ .main__header__user__info {
+		margin-left: 8px;
+	}
+}
+.main__header__user__name {
+	margin: 0 0 -2px;
+	color: #34373c;
+	font-family: $font-aktiv;
+	font-size: $font-size-base - 1;
+	font-weight: bold;
+}
+.main__header__user__title {
+	margin: 0;
+	color: $brand-primary;
+	font-size: $font-size-base - 2;
+	font-weight: bold;
+}
+.main__header__user__settings {
+	height: 36px;
+	padding-left: 13px;
+	i {
+		color: $grayish;
+		line-height: 36px;
+	}
+}
+.main__header__user__menu {
+	width: 100%;
+	width: calc(100% + 2px);
+	margin-top: 0;
+	margin-left: 0;
+	margin-left: calc(-1px);
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	overflow-y: hidden;
+	box-shadow: 0 1px 2px 0 rgba(116,134,139,.1);
+}
+
+
+
+// Mobile
+//------------------------------------------------//
+
+@media only screen and (max-width: $screen-xs-max) {
+	.main__header {
+		z-index: 1600;
+		height: $header-height-mobile;
+		padding: 0;
+		background: $brand-primary;
+		box-shadow: none;
+	}
+	.main__header__logo {
+		display: inline-block;
+		width: auto;
+		height: $header-height-mobile;
+		img {
+			height: 26px;
+			margin: 9px 0 0 13px;
+		}
+	}
+	.main__header__title {
+		display: none;
+	}
+	.main__header__user {
+		position: static;
+		&.open {
+			border-color: transparent;
+			background: #fff;
+			.main__header__user__title {
+				color: $brand-primary;
+			}
+			.main__header__user__name,
+			.main__header__user__settings i {
+				color: $text-color;
+			}
+		}
+	}
+	.main__header__user__wrapper {
+		padding-top: 6px;
+	}
+	.main__header__user__image {
+		display: none;
+		+ .main__header__user__info {
+			margin-left: 0;
+		}
+	}
+	.main__header__user__title {
+		color: $text-color;
+	}
+	.main__header__user__name {
+		color: #fff;
+	}
+	.main__header__user__settings {
+		padding-left: 5px;
+		i {
+			color: #fff;
+		}
+	}
+	.main__header__user__menu {
+		display: block;
+		right: 0;
+		height: 0;
+		margin-left: auto;
+		border: none;
+		box-shadow: none;
+		transition-timing-function: $anim-timing-fn;
+		transition-duration: $anim-duration;
+		transition-property: height;
+		> li {
+			> a {
+				color: $text-color;
+				font-size: $font-size-base - 1;
+				font-weight: bold;
+				text-transform: uppercase;
+			}
+		}
+		i {
+			margin-top: -2px;
+			margin-right: 7px;
+			vertical-align: middle;
+		}
+		.open & {
+			height: 3 * 46px - 1;
+		}
+	}
+}

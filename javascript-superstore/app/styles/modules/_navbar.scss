@@ -1,0 +1,167 @@
+// * * * * *
+// Project name: CAT
+// SCSS by: Timo Mitt timo.mitt@nortal.com
+// Project started: 05.12.2016
+// * * * * *
+
+
+// Navbar
+//------------------------------------------------//
+
+.nav-sidebar-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: $navbar-width;
+	height: 100%;
+	box-shadow: inset -3px 0px 3px 0px rgba(0,0,0,.2);
+	@include gradient-vertical(#262d34, #38414b);
+}
+.nav-sidebar {
+	height: 100%;
+	background: repeating-linear-gradient(-45deg, transparent, transparent, rgba(0,0,0,.04) 3px, rgba(0,0,0,.04) 5px);
+}
+.navbar-collapse {
+	padding: 0;
+	overflow-y: hidden;
+	&.in {
+		overflow-y: hidden;
+	}
+	&.collapsing {
+		transition-timing-function: $anim-timing-fn !important;
+		transition-duration: $anim-duration;
+	}
+}
+.nav-sidebar__logo {
+	width: 100%;
+	height: $header-height;
+	a {
+		display: block;
+		width: 100%;
+		height: 100%;
+		background: $brand-primary;
+	}
+	img {
+		width: auto;
+		height: 34px;
+		margin: 13px 0 0 19px;
+	}
+}
+.nav-sidebar__title {
+	display: none;
+}
+.nav-sidebar__navs {
+	margin: 14px 0 0;
+	padding: 0;
+	list-style: none;
+}
+.nav-sidebar__item {
+	&.active {
+		.nav-sidebar__link {
+			background-color: $gray-lighter;
+			color: #293038;
+			font-weight: bold;
+			@include hocus() {
+				color: #293038;
+			}
+		}
+	}
+}
+.nav-sidebar__link {
+	display: block;
+	padding: $spacing-unit-base;
+	padding-left: ($spacing-unit-base * 2);
+	color: #8c9da1;
+	font-size: $font-size-base - 1;
+	text-transform: uppercase;
+	@include hocus() {
+		color: #8c9da1;
+		text-decoration: none;
+		outline: none;
+	}
+	i {
+		width: $font-size-icon + 4;
+		margin-right: 10px;
+		font-size: $font-size-icon;
+		text-align: center;
+	}
+	// .nav-sidebar__link--offset
+	&--offset {
+		margin-left: 5px;
+	}
+	// .nav-sidebar__link--small
+	&--small {
+		font-size: $font-size-base - 2;
+	}
+	// .nav-sidebar__link--large
+	&--large {
+		font-size: $font-size-base;
+	}
+}
+.nav-sidebar__toggle {
+	display: none;
+	float: right;
+	margin: 0;
+	margin-right: 2px;
+	padding: $spacing-unit-base + 1;
+	border: none;
+	background: none;
+	box-shadow: none;
+	color: #fff;
+	font-size: $font-size-large;
+	&:focus {
+		outline: none;
+	}
+}
+
+
+
+// Mobile
+//------------------------------------------------//
+
+@media only screen and (max-width: $screen-xs-max) {
+	.nav-sidebar {
+		min-height: $header-height-mobile;
+	}
+	.nav-sidebar-wrapper {
+		top: $header-height-mobile;
+		z-index: 1500;
+		width: 100%;
+		height: auto;
+		max-height: 100%;
+		overflow-y: auto;
+	}
+	.navbar-collapse {
+		width: 100%;
+		padding: 0 0 $spacing-unit-base * 2;
+		border: none;
+		box-shadow: none;
+	}
+	.nav-sidebar__logo {
+		display: none;
+	}
+	.nav-sidebar__title {
+		display: inline-block;
+		height: $header-height-mobile;
+		padding: floor($spacing-unit-base * 1.5);
+		color: #fff;
+		font-size: $font-size-base - 1;
+		font-weight: bold;
+		text-transform: uppercase;
+		i {
+			margin-right: $spacing-unit-base - 1;
+			font-size: $font-size-icon;
+		}
+	}
+	.nav-sidebar__navs {
+		margin: 0;
+	}
+	.nav-sidebar__toggle {
+		display: block;
+	}
+	.nav-sidebar__link {
+		i {
+			margin-right: 9px;
+		}
+	}
+}

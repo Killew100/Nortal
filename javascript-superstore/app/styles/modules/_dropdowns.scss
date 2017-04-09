@@ -1,0 +1,55 @@
+// * * * * *
+// Project name: CAT
+// SCSS by: Timo Mitt timo.mitt@nortal.com
+// Project started: 05.12.2016
+// * * * * *
+
+
+// Dropdowns
+//------------------------------------------------//
+
+// Panel header dropdown
+
+.dropdown-menu {
+	padding: 0;
+	border-color: $gray-light;
+	box-shadow: $box-shadow-light;
+	> li {
+		&:not(:last-child) {
+			border-bottom: 1px solid $gray-light;
+		}
+		> a {
+			padding: 15px ($spacing-unit-base * 2);
+			color: $brand-info;
+		}
+	}
+	i {
+		margin-right: $spacing-unit-base;
+		font-size: $font-size-icon;
+	}
+	// Parent selector with trailing ampersand
+	.panel-group-main__btn-group & {
+		margin-right: -5px;
+		&:before,
+		&:after {
+			position: absolute;
+			content: "";
+		}
+		&:before {
+			top: -8px;
+			right: 13px;
+			z-index: 7;
+			border-width: 0 5px 8px;
+			border-style: solid;
+			border-color: #fff transparent;
+		}
+		&:after {
+			top: -9px;
+			right: 12px;
+			z-index: 6;
+			border-width: 0 6px 9px;
+			border-style: solid;
+			border-color: $gray-light transparent;
+		}
+	}
+}

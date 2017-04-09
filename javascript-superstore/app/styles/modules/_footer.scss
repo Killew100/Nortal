@@ -1,0 +1,25 @@
+// * * * * *
+// Project name: CAT
+// SCSS by: Timo Mitt timo.mitt@nortal.com
+// Project started: 05.12.2016
+// * * * * *
+
+
+// Footer
+//------------------------------------------------//
+
+.footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: $footer-height;
+	background-color: #fff;
+	box-shadow: 0 -1px 0 0 $gray-light;
+	z-index: 100;
+	p {
+		color: $grayish;
+		font-size: $font-size-base - 1;
+		margin: floor(($footer-height - $font-size-base * $line-height-base)/2) 0 0;
+	}
+}

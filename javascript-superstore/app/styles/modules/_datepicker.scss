@@ -1,0 +1,132 @@
+// * * * * *
+// Project name: CAT
+// SCSS by: Timo Mitt timo.mitt@nortal.com
+// Project started: 05.12.2016
+// * * * * *
+
+
+// Datepicker popup
+
+.uib-datepicker-popup {
+	border: none;
+	&.dropdown-menu {
+		box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+	}
+	.uib-daypicker,
+	.uib-monthpicker,
+	.uib-yearpicker {
+		outline: none;
+		.btn {
+			border: none;
+			border-radius: 0;
+			background-color: transparent;
+			font-size: 13px;
+			font-family: $font-open-sans;
+			outline: none;
+			&:not(:disabled):hover {
+				background-color: $gray-lighter;
+			}
+			&:active,
+			&.active {
+				box-shadow: none;
+			}
+			&.btn-info {
+				background-color: $brand-primary !important;
+				.text-info {
+					color: #fff;
+				}
+			}
+		}
+		thead {
+			border-bottom: 1px solid $gray-lighter;
+			tr:first-child {
+				background: $brand-primary;
+				th {
+					&:first-child {
+						padding-left: 5px;
+					}
+					&:last-child {
+						padding-right: 5px;
+					}
+				}
+				.btn {
+					color: #fff;
+					&:hover {
+						background: darken($brand-primary, 5%);
+					}
+				}
+				.uib-title {
+					font-family: $font-open-sans;
+				}
+				.uib-left,
+				.uib-right {
+					width: 30px;
+					height: 30px;
+					line-height: 20px;
+					&:before {
+						font-family: FontAwesome;
+						font-size: 16px;
+					}
+					i {
+						display: none;
+					}
+				}
+				.uib-left {
+					&:before {
+						content: "\f104";
+					}
+				}
+				.uib-right {
+					&:before {
+						content: "\f105";
+					}
+				}
+			}
+			th {
+				padding: 5px 0;
+			}
+		}
+		tbody {
+			td {
+				padding: 3px;
+			}
+			.btn {
+				font-weight: 400;
+				&:disabled,
+				&:disabled .text-muted {
+					color: darken($gray-lighter, 10%);
+				}
+			}
+			.text-muted {
+				color: $gray-light;
+			}
+			.text-info {
+				color: $text-color;
+				font-weight: 400;
+			}
+		}
+	}
+	// Day view
+	.uib-daypicker {
+		tbody {
+			.btn {
+				width: 30px;
+				height: 30px;
+				border-radius: 100%;
+				padding: 0;
+			}
+		}
+	}
+	// Month view
+	.uib-monthpicker {
+		thead {
+
+		}
+		tbody {
+			td {
+				width: 33.3%;
+			}
+		}
+	}
+	// Year view
+}

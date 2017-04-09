@@ -1,0 +1,42 @@
+// * * * * *
+// Project name: CAT
+// SCSS by: Timo Mitt timo.mitt@nortal.com
+// Project started: 05.12.2016
+// * * * * *
+
+
+// Loader spinner
+
+.loader__spinner {
+	font-size: $font-size-icon;
+	color: $brand-primary;
+}
+
+
+// Main loader
+//------------------------------------------------//
+
+.main__loader {
+	top: 0;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	position: absolute;
+	background: rgba(255,255,255,.5);
+	z-index: 1800;
+	text-align: center;
+	&:before {
+		content: '';
+		display: inline-block;
+		height: 100%;
+		vertical-align: middle;
+	}
+}
+
+
+// Comments loader
+//------------------------------------------------//
+
+.comments__loader {
+	text-align: center;
+}

@@ -1,0 +1,93 @@
+// * * * * *
+// Project name: CAT
+// SCSS by: Timo Mitt timo.mitt@nortal.com
+// Project started: 05.12.2016
+// * * * * *
+
+
+// Comments
+//------------------------------------------------//
+
+// Main component
+
+.comment {
+	position: relative;
+	margin-top: floor($spacing-unit-base * 1.5);
+	&:before,
+	&:after {
+		position: absolute;
+		left: 27px;
+		border-width: 0 7px 9px;
+		border-style: solid;
+		content: "";
+	}
+	&:before {
+		top: -8px;
+		z-index: 7;
+		border-color: transparent transparent #fff;
+	}
+	&:after {
+		top: -9px;
+		z-index: 6;
+		border-color: transparent transparent darken($gray-lighter, 4%);
+	}
+}
+
+// Sections
+
+.comment__header,
+.comment__body {
+	background: #fff;
+	p {
+		margin: 0;
+		white-space: pre-line;
+	}
+}
+.comment__header {
+	padding: $spacing-unit-base * 2;
+	padding-bottom: $spacing-unit-base;
+	border-top-left-radius: $border-radius-base;
+	border-top-right-radius: $border-radius-base;
+}
+.comment__body {
+	padding: 0 ($spacing-unit-base * 2) ($spacing-unit-base * 2);
+	color: $gray;
+	p {
+		word-wrap: break-word;
+	}
+}
+
+// Components
+
+.comment__header__image {
+	width: $spacing-unit-base * 3;
+	height: $spacing-unit-base * 3;
+	border-radius: 100%;
+}
+.comment__header__content {
+	$temp: $spacing-unit-base * 3;
+	display: block;
+	padding:0;
+	padding-right: $temp;
+	vertical-align: top;
+	position: relative;
+	.btn-link {
+		position: absolute;
+		top: 0;
+		padding-left: 0;
+		padding-right: 0;
+		right: -($spacing-unit-base * .5);
+		&:focus {
+			outline: none;
+		}
+	}
+}
+.comment__header__title {
+	color: $grayish;
+	font-size: $font-size-small;
+	font-weight: bold;
+}
+.comment__header__sub {
+	font-size: $font-size-icon;
+	font-weight: bold;
+}
