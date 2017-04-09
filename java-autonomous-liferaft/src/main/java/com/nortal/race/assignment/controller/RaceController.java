@@ -17,7 +17,6 @@ public class RaceController {
     private boolean take = true;
     private Point point;
     private boolean taken;
-
     public RaceController() {
     }
 
@@ -32,7 +31,6 @@ public class RaceController {
             return 0;
         });
     }
-
     public VesselCommand calculateNextCommand(Vessel vessel, RaceArea raceArea) {
         if (!taken){
             taken = true;
@@ -48,30 +46,40 @@ public class RaceController {
             y = targetsToCapture.get(count).getY();
             double x2 = vessel.getPosition().getX();
             double y2 = vessel.getPosition().getY();
-
             if (( x2 > x - 2 && x2 < x + 2) && ( y2 > y - 2 && y2 < y + 2 )) {
                 targetsToCapture.remove(point);
                 take = true;
-            }  else if (( x2 <= x - 2 || x2 >= x + 2 )) {
+            }  else if (( x2 <= x - 2 || x2 >= x + 2 ) ) {
                 if (x < x2) {
                     vesselCommand.setThruster(Thruster.RIGHT);
-                    vesselCommand.setThrusterLevel(ThrusterLevel.T2);
                 } else {
                     vesselCommand.setThruster(Thruster.LEFT);
-                    vesselCommand.setThrusterLevel(ThrusterLevel.T2);
                 }
             }  else if (( y2 > y - 2 || y2 < y + 2 )) {
                 if (y < y2) {
                     vesselCommand.setThruster(Thruster.FRONT);
-                    vesselCommand.setThrusterLevel(ThrusterLevel.T2);
                 } else {
                     vesselCommand.setThruster(Thruster.BACK);
-                    vesselCommand.setThrusterLevel(ThrusterLevel.T2);
                 }
             } else {
                 vesselCommand.setThrusterLevel(ThrusterLevel.T0);
             }
-
+                double a = Math.abs(x - x2);
+                double b = Math.abs(y - y2);
+                if (((a < 10 && vessel.getSpeedX() != 0) || (b < 10 && vessel.getSpeedY() != 0)) && vessel.getSpeedX() > 2){
+                    if (vesselCommand.getThruster() == Thruster.LEFT){
+                        vesselCommand.setThruster(Thruster.RIGHT);
+                    } else if (vesselCommand.getThruster() == Thruster.RIGHT){
+                        vesselCommand.setThruster(Thruster.LEFT);
+                    }
+                    vesselCommand.setThrusterLevel(ThrusterLevel.T1);
+                } else if (a < 50 || b < 50){
+                    vesselCommand.setThrusterLevel(ThrusterLevel.T2);
+                } else if (a < 100 || b < 100) {
+                    vesselCommand.setThrusterLevel(ThrusterLevel.T3);
+                } else {
+                    vesselCommand.setThrusterLevel(ThrusterLevel.T4);
+                }
         // TODO: Implement algorithm to return command for the vessel to capture all the targets on the raceArea provided
         return vesselCommand;
     }
