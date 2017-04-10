@@ -18,7 +18,8 @@
 				}
 			},
 			data: {
-				title: 'Superstor | Accounts'
+				title: 'Superstor | Accounts',
+                scrollable: true
 			}
 		});
 
@@ -26,22 +27,20 @@
 
 	// Inject
 	ViewCtrl.$inject = ['$scope'];
-	ViewCtrl.$inject = ['$http'];
 
 	// Controller for navigation component
 	function ViewCtrl($scope) {
-        var http = require('http');
 		var vm;
 
-		// Controller on init
-		this.$onInit = function() {
-			vm = this;
+        // Controller on init
 
-			vm.rows = [
-				{ id: '123', name: 'Added name 1' },
-				{ id: '321', name: 'Added name 2' }
-			];
-
+        this.$onInit = function() {
+            vm = this;
+            $.getJSON('https://reqres.in/api/users?per_page=100', function(data) {
+                vm.rows = data["data"];
+                vm.page = 0;
+                $scope.$apply();
+            });
 			vm.add = add;
 		};
 

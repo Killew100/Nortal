@@ -1,4 +1,3 @@
--- TODO: Should we remove this?
 -- select 'Oh no, an SQL just to keep Liquibase happy. ' ||
 --        '#hiddenErrors #worksOnMyMachine' from (values(0));
 

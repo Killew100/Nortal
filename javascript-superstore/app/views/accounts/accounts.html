@@ -3,7 +3,6 @@
 		<div class="main__content__head">
 			<h1 class="main__content__title">Accounts</h1>
 		</div>
-		<div class="row">
 			<table class="table table-bordered table-sortable">
 				<thead>
 					<tr>
@@ -22,12 +21,12 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr data-ng-repeat="row in vm.rows | orderBy:vm.sortType:vm.sortReverse | limitTo:5:(vm.page * 5 + 1)">
-						<td>{{::row.avatar || '-'}}</td>
+					<tr data-ng-repeat="row in vm.rows | orderBy:vm.sortType:vm.sortReverse | limitTo:5:(vm.page * 5)">
+						<td><img ng-src="{{row.avatar}}"></td>
 						<td>{{::row.id || '-'}}</td>
-						<td>{{::row.name || '-'}}</td>
+						<td>{{::row.first_name || ''}} {{::row.last_name || ''}}</td>
 						<td>
-							<a href="#0">Edit</a>
+							<a href="#">Edit</a>
 						</td>
 					</tr>
 					<tr class="input-row">
@@ -64,5 +63,4 @@
 				</ul>
 			</nav>
 		</div>
-	</div>
 </div>
