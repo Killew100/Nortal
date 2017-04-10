@@ -152,7 +152,7 @@ public class RaceSimulator {
     }
 
     private int calculateDisplacement(double currentSpeed, double vesselAcceleration, double timeSpentSeconds) {
-        double exactDisplacement = currentSpeed * timeSpentSeconds + 1 / 2 * vesselAcceleration * Math.pow(timeSpentSeconds, 2);
+        double exactDisplacement = currentSpeed * timeSpentSeconds + 1.0 / 2 * vesselAcceleration * Math.pow(timeSpentSeconds, 2);
         return (int) Math.round(exactDisplacement);
     }
 
