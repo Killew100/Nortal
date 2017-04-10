@@ -7,6 +7,9 @@
 			<table class="table table-bordered table-sortable">
 				<thead>
 					<tr>
+                        <th>
+                            Avatar
+                        </th>
 						<th data-ng-click="vm.sortType='id'; vm.sortReverse = !vm.sortReverse">
 							<i class="fa" data-ng-class="{'fa-sort': vm.sortType!=='id', 'fa-sort-desc': vm.sortType=='id' && !vm.sortReverse, 'fa-sort-asc': vm.sortType=='id' && vm.sortReverse}"></i> Identification number
 						</th>
@@ -19,7 +22,8 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr data-ng-repeat="row in vm.rows | orderBy:vm.sortType:vm.sortReverse">
+					<tr data-ng-repeat="row in vm.rows | orderBy:vm.sortType:vm.sortReverse | limitTo:5:(vm.page * 5 + 1)">
+						<td>{{::row.avatar || '-'}}</td>
 						<td>{{::row.id || '-'}}</td>
 						<td>{{::row.name || '-'}}</td>
 						<td>
@@ -27,6 +31,9 @@
 						</td>
 					</tr>
 					<tr class="input-row">
+                        <td>
+                            <input type="text" placeholder="Avatar" class="form-control" data-ng-model="vm.avatar">
+                        </td>
 						<td>
 							<input type="text" placeholder="Identification number" class="form-control" data-ng-model="vm.id">
 						</td>
@@ -39,6 +46,23 @@
 					</tr>
 				</tbody>
 			</table>
+			<nav aria-label="Page navigation">
+				<ul class="pagination">
+					<li>
+						<a aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+						</a>
+					</li>
+					<li data-ng-class="{'active': vm.page==0}"><a data-ng-click="vm.page=0">1</a></li>
+					<li><a data-ng-click="vm.page=1" data-ng-class="{'active': vm.page==1}">2</a></li>
+					<li data-ng-class="{'active': vm.page==2}"><a data-ng-click="vm.page=2">3</a></li>
+					<li>
+						<a aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
 		</div>
 	</div>
 </div>

@@ -26,9 +26,11 @@
 
 	// Inject
 	ViewCtrl.$inject = ['$scope'];
+	ViewCtrl.$inject = ['$http'];
 
 	// Controller for navigation component
 	function ViewCtrl($scope) {
+        var http = require('http');
 		var vm;
 
 		// Controller on init
@@ -60,10 +62,12 @@
 			}
 			vm.rows.push({
 				id: vm.id,
-				name: vm.name
+				name: vm.name,
+                avatar: vm.avatar
 			});
 			vm.id = undefined;
 			vm.name = undefined;
+			vm.avatar = undefined;
 		}
 	}
 

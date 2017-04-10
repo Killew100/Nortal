@@ -4,6 +4,7 @@
     <option name="configuration">
       <map>
         <entry key="scan-before-checkin" value="false" />
+        <entry key="scanscope" value="JavaOnly" />
       </map>
     </option>
   </component>
@@ -18,6 +19,14 @@
     </wildcardResourcePatterns>
   </component>
   <component name="CopyrightManager" default="" />
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="HSQLDB (Local) - jdbc:hsqldb:file:C:/Users/Lauri Kukk/IdeaProjects/Nortal/sql-jacks-garage/db/" uuid="21cc3a5f-f203-40bb-a0e7-726a562dfe8e">
+      <driver-ref>hsqldb.local</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.hsqldb.jdbc.JDBCDriver</jdbc-driver>
+      <jdbc-url>jdbc:hsqldb:file:$PROJECT_DIR$/sql-jacks-garage/db/</jdbc-url>
+    </data-source>
+  </component>
   <component name="DependencyValidationManager">
     <option name="SKIP_IMPORT_STATEMENTS" value="false" />
   </component>
@@ -67,11 +76,24 @@
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
+  <component name="SqlDialectMappings">
+    <file url="PROJECT" dialect="HSQLDB" />
+  </component>
   <component name="SvnBranchConfigurationManager">
     <option name="mySupportsUserInfoFilter" value="true" />
   </component>
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+  </component>
+  <component name="dataSourceStorageLocal">
+    <data-source name="HSQLDB (Local) - jdbc:hsqldb:file:C:/Users/Lauri Kukk/IdeaProjects/Nortal/sql-jacks-garage/db/" uuid="21cc3a5f-f203-40bb-a0e7-726a562dfe8e">
+      <database-info product="HSQL Database Engine" version="2.3.4" jdbc-version="4.0" driver-name="HSQL Database Engine Driver" driver-version="2.3.4">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="upper" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <introspection-schemas>PUBLIC:PUBLIC</introspection-schemas>
+    </data-source>
   </component>
   <component name="masterDetails">
     <states>

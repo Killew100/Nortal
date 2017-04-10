@@ -1,5 +1,11 @@
-select 'Oh no, an SQL just to keep Liquibase happy. ' ||
-       '#hiddenErrors #worksOnMyMachine' from (values(0));
+-- select 'Oh no, an SQL just to keep Liquibase happy. ' ||
+--        '#hiddenErrors #worksOnMyMachine' from (values(0));
 
 -- 3. Add foreign keys
+ALTER TABLE WORK_LOG
+ADD CONSTRAINT REF_REPAIR_JOB
+FOREIGN KEY (REF_REPAIR_JOB) REFERENCES REPAIR_JOB(ID);
 
+ALTER TABLE SPARE_PART
+ADD CONSTRAINT REF_REPAIR_JOB
+FOREIGN KEY (REF_REPAIR_JOB) REFERENCES REPAIR_JOB(ID);
