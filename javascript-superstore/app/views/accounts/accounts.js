@@ -37,6 +37,7 @@
         this.$onInit = function() {
             vm = this;
             $.getJSON('https://reqres.in/api/users?per_page=100', function(data) {
+            	vm.total = data["total"]
                 vm.rows = data["data"];
                 vm.page = 0;
                 $scope.$apply();
@@ -56,16 +57,15 @@
 		 *	Function that adds to a table
 		 */
 		function add() {
-			if (vm.name.indexOf('ä') > -1 || vm.name.indexOf('õ') > -1 || vm.name.indexOf('ü') > -1 || vm.name.indexOf('ö') > -1) {
-				vm.name = undefined;
-			}
 			vm.rows.push({
 				id: vm.id,
-				name: vm.name,
+				first_name: vm.first_name,
+                last_name: vm.last_name,
                 avatar: vm.avatar
 			});
 			vm.id = undefined;
-			vm.name = undefined;
+			vm.first_name = undefined;
+			vm.last_name = undefined;
 			vm.avatar = undefined;
 		}
 	}

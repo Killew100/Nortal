@@ -1,63 +1,55 @@
 <div class="main__content">
 	<div class="container-fluid">
 		<div class="main__content__head">
-			<h1 class="main__content__title">Settings</h1>
+			<h1 class="main__content__title"></h1>
 		</div>
-		<div class="row offset--bottom">
-			<div class="col-sm-2">
-				<label class="control-label">Limit:</label>
-			</div>
-			<div class="col-sm-9">
-				<div class="radio">
-					<label>
-						<input type="radio" data-ng-model="vm.limits" value="1"> 50 EUR
-					</label>
-				</div>
-				<div class="radio">
-					<label>
-						<input type="radio" data-ng-model="vm.limits" value="2" class="offset--left"> 100 EUR
-					</label>
-				</div>
-				<div class="radio">
-					<label>
-						<input type="radio" data-ng-model="vm.limits" value="3"> 150
-					</label>
-				</div>
-			</div>
-		</div>
-		<div class="row offset--bottom">
-			<div class="col-sm-3">
-				<label class="control-label offset--left-xl">Address:</label>
-			</div>
-			<div class="col-sm-9">
-				<input type="text" class="form-control control-inline offset--left-xl" placeholder="Address">
-			</div>
-		</div>
-		<div class="row offset--bottom">
-			<div class="col-sm-3">
-				<label class="control-label">Bank card:</label>
-			</div>
-			<div class="col-sm-9">
-				<input type="text" class="form-control control-inline" placeholder="Bank account">
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-3 col-sm-push-3">
-				<select class="form-control control-inline">
-					<option value="0">SEB</option>
-					<option value="1">LHV</option>
-					<option value="2">Swedbank</option>
-					<option value="3">Tallinn Business Bank</option>
-				</select>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-3">
-				<label class="control-label">Current discount:</label>
-			</div>
-			<div class="col-sm-6">
-				<input type="text" class="form-control" placeholder="Write at least 3 characters to see other possible discounts">
-			</div>
+		<table class="table table-bordered table-sortable">
+			<thead>
+			<tr>
+				<th data-ng-click="vm.sortType='name'; vm.sortReverse = !vm.sortReverse" tooltip="Sorteeri" tooltip-append-to-body="true">
+					<i class="fa" data-ng-class="{'fa-sort': vm.sortType!=='name', 'fa-sort-desc': vm.sortType=='name' && !vm.sortReverse, 'fa-sort-asc': vm.sortType=='name' && vm.sortReverse}"></i> Product
+				</th>
+				<th tooltip="Sorteeri" tooltip-append-to-body="true">
+					<i class="fa" data-ng-class="{'fa-sort': vm.sortType!=='price', 'fa-sort-desc': vm.sortType=='price' && !vm.sortReverse, 'fa-sort-asc': vm.sortType=='price' && vm.sortReverse}"></i> Price
+				</th>
+				<th data-ng-click="vm.sortType='date'; vm.sortReverse = !vm.sortReverse" tooltip="Sorteeri" tooltip-append-to-body="true">
+					<i class="fa" data-ng-class="{'fa-sort': vm.sortType!=='date', 'fa-sort-desc': vm.sortType=='date' && !vm.sortReverse, 'fa-sort-asc': vm.sortType=='date' && vm.sortReverse}"></i> Time
+				</th>
+				<th data-ng-click="vm.sortType='store'; vm.sortReverse = !vm.sortReverse" tooltip="Sorteeri" tooltip-append-to-body="true">
+					<i class="fa" data-ng-class="{'fa-sort': vm.sortType!=='store', 'fa-sort-asc': vm.sortType=='store' && !vm.sortReverse, 'fa-sort-desc': vm.sortType=='store' && vm.sortReverse}"></i>Store
+				</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr data-ng-repeat="row in vm.rows | orderBy:vm.sortType:vm.sortReverse | limitTo:5:(vm.page * 5 + 1)">
+				<td>{{::row.name}}</td>
+				<td>{{::row.price}}</td>
+				<td>{{::row.date}}</td>
+				<td>{{::row.store}}</td>
+			</tr>
+			</tbody>
+		</table>
+		<nav aria-label="Page navigation">
+			<ul class="pagination">
+				<li>
+					<a aria-label="Previous">
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
+				<li data-ng-class="{'active': vm.page==0}"><a data-ng-click="vm.page=0">1</a></li>
+				<li><a data-ng-click="vm.page=1" data-ng-class="{'active': vm.page==1}">2</a></li>
+				<li data-ng-class="{'active': vm.page==2}"><a data-ng-click="vm.page=2">3</a></li>
+				<li>
+					<a aria-label="Next">
+						<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+	<div class="row">
+		<div class="col-sm-3 col-sm-push-3">
+			<a class="btn btn-success btn-no-hover" target="_self" href="files/history.xlsx" download="frwgaQXgvtMijk.xlsx">Export to CSV file</a>
 		</div>
 	</div>
 </div>

@@ -3,7 +3,7 @@
 		<div class="main__content__head">
 			<h1 class="main__content__title">Accounts</h1>
 		</div>
-			<table class="table table-bordered table-sortable">
+			<table class="table table-bordered table-sortable" style="width: 100%">
 				<thead>
 					<tr>
                         <th>
@@ -21,26 +21,27 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr data-ng-repeat="row in vm.rows | orderBy:vm.sortType:vm.sortReverse | limitTo:5:(vm.page * 5)">
-						<td><img ng-src="{{row.avatar}}"></td>
-						<td>{{::row.id || '-'}}</td>
-						<td>{{::row.first_name || ''}} {{::row.last_name || ''}}</td>
-						<td>
+					<tr data-ng-repeat="row in vm.rows | orderBy:vm.sortType:vm.sortReverse | limitTo:vm.total/3:(vm.page * vm.total/3)">
+						<td style="text-align: center;"><img class="imageInTable" ng-src="{{row.avatar || ''}}"></td>
+						<td style="text-align: center;">{{::row.id || '-'}}</td>
+						<td style="text-align: center;">{{::row.first_name || ''}} {{::row.last_name || ''}}</td>
+						<td style="text-align: center;">
 							<a href="#">Edit</a>
 						</td>
 					</tr>
 					<tr class="input-row">
                         <td>
-                            <input type="text" placeholder="Avatar" class="form-control" data-ng-model="vm.avatar">
+                            <input type="text" placeholder="Avatar link" class="form-control" data-ng-model="vm.avatar">
                         </td>
 						<td>
 							<input type="text" placeholder="Identification number" class="form-control" data-ng-model="vm.id">
 						</td>
 						<td>
-							<input type="text" placeholder="Name" class="form-control" data-ng-model="vm.name">
+							<input style="display: inline;width: 49%;" type="text" placeholder="First Name" class="form-control name" data-ng-model="vm.first_name">
+							<input style="display: inline;width: 49%;" type="text" placeholder="Last Name" class="form-control name" data-ng-model="vm.last_name">
 						</td>
 						<td>
-							<button type="button" class="btn btn-success" data-ng-click="vm.add()">Add</button>
+							<button style="width: 100%" type="button" class="btn btn-success" data-ng-click="vm.add()">Add</button>
 						</td>
 					</tr>
 				</tbody>
