@@ -16,6 +16,7 @@ public class RaceController {
     private Point point;
     private boolean taken;
     public static final int THREE = 3;
+    private Point place;
 
     public RaceController() {
     }
@@ -40,6 +41,7 @@ public class RaceController {
 
     public VesselCommand calculateNextCommand(Vessel vessel, RaceArea raceArea) {
         if (!taken) {
+            place = vessel.getPosition();
             taken = true;
             targetsToCapture = raceArea.getTargets();
         }
@@ -57,7 +59,7 @@ public class RaceController {
         }
         double x2 = vessel.getPosition().getX();
         double y2 = vessel.getPosition().getY();
-        if ((x2 >= x - 2 && x2 <= x + 2) && (y2 >= y - 2 && y2 <= y + 2)){
+        if ((x2 >= x - 1 && x2 <= x + 1) && (y2 >= y - 1 && y2 <= y + 1) || ((Math.abs(place.getX() - x2) == 1 || Math.abs(place.getX() - x2) == 0) && (Math.abs(x2 - point.getX()) == 1 || Math.abs(x2 - point.getX()) == 0) && ((place.getY() > point.getY() && point.getY() > y2) || (place.getY() < point.getY() && point.getY() < y2) ))){
             targetsToCapture.remove(point);
             take = true;
         } else if ((x2 <= x - 2 || x2 >= x + 2)) {
@@ -72,17 +74,13 @@ public class RaceController {
             } else {
                 vesselCommand.setThruster(Thruster.BACK);
             }
-        } else {
-            vesselCommand.setThrusterLevel(ThrusterLevel.T0);
         }
-
-
         if (!take) {
             double a = Math.abs(x - x2);
             double b = Math.abs(y - y2);
-            if (((a < 30 && vessel.getSpeedX() != 0) || (b < 30 && vessel.getSpeedY() != 0))
-                    && (vessel.getSpeedX() > 3 || vessel.getSpeedY() > 3)) {
-                if (vesselCommand.getThruster() == Thruster.LEFT && vessel.getSpeedX() > 0) {
+            if (((a < 35 && vessel.getSpeedX() != 0) || (b < 35 && vessel.getSpeedY() != 0))
+                    && (vessel.getSpeedX() > 2.5 || vessel.getSpeedY() > 2.5) && !(targetsToCapture.size() == 1 && ((Math.abs(y2 - y) < 2 && Math.abs(y2 - y) >= 0) || (Math.abs(y2 - y) >= 0 && Math.abs(x2 - x) < 2)))) {
+                if (vesselCommand.getThruster() == Thruster.LEFT && vessel.getSpeedX() > 0 ) {
                     vesselCommand.setThruster(Thruster.RIGHT);
                 } else if (vesselCommand.getThruster() == Thruster.RIGHT && vessel.getSpeedX() < 0) {
                     vesselCommand.setThruster(Thruster.LEFT);
@@ -92,12 +90,11 @@ public class RaceController {
                     vesselCommand.setThruster(Thruster.FRONT);
                 }
                 vesselCommand.setThrusterLevel(ThrusterLevel.T4);
-            } else if (a < 20 || b < 20) {
-                vesselCommand.setThrusterLevel(ThrusterLevel.T3);
             } else {
                 vesselCommand.setThrusterLevel(ThrusterLevel.T4);
             }
         }
+        place = vessel.getPosition();
         return vesselCommand;
     }
 }
