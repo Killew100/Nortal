@@ -53,50 +53,46 @@ public class RaceController {
                 take = false;
                 point = targetsToCapture.get(0);
             }
-            x = targetsToCapture.get(0).getX();
-            y = targetsToCapture.get(0).getY();
+            x = point.getX();
+            y = point.getY();
 
         }
         double x2 = vessel.getPosition().getX();
         double y2 = vessel.getPosition().getY();
-        if ((x2 >= x - 1 && x2 <= x + 1) && (y2 >= y - 1 && y2 <= y + 1) || ((Math.abs(place.getX() - x2) == 1 || Math.abs(place.getX() - x2) == 0) && (Math.abs(x2 - point.getX()) == 1 || Math.abs(x2 - point.getX()) == 0) && ((place.getY() > point.getY() && point.getY() > y2) || (place.getY() < point.getY() && point.getY() < y2) ))){
+        if ((x2 > x - 2 && x2 < x + 2) && (y2 > y - 2 && y2 < y + 2) || ((Math.abs(place.getX() - x2) == 1 || Math.abs(place.getX() - x2) == 0) && (Math.abs(x2 - point.getX()) == 1 || Math.abs(x2 - point.getX()) == 0) && ((place.getY() > point.getY() && point.getY() > y2) || (place.getY() < point.getY() && point.getY() < y2) ))){
             targetsToCapture.remove(point);
             take = true;
-        } else if ((x2 <= x - 2 || x2 >= x + 2)) {
-            if (x < x2) {
+        } else if ((x2 <= x - 3 || x2 >= x + 3)) {
+            if (x < x2 ) {
                 vesselCommand.setThruster(Thruster.RIGHT);
             } else {
                 vesselCommand.setThruster(Thruster.LEFT);
             }
-        } else if ((y2 > y - 2 || y2 < y + 2)) {
-            if (y < y2) {
+        } else if ((y2 < y - 1.8 || y2 > y + 1.8)) {
+            if (y < y2 && y2 - 2 > 0) {
                 vesselCommand.setThruster(Thruster.FRONT);
-            } else {
+            } else if (y >= y2 && y2 + 4 < raceArea.getHeight()){
                 vesselCommand.setThruster(Thruster.BACK);
             }
         }
         if (!take) {
             double a = Math.abs(x - x2);
             double b = Math.abs(y - y2);
-            if (((a < 35 && vessel.getSpeedX() != 0) || (b < 40 && vessel.getSpeedY() != 0))
-                    && (vessel.getSpeedX() > 2.5 || vessel.getSpeedY() > 2.4) && !(targetsToCapture.size() == 1 && ((Math.abs(y2 - y) < 2 && Math.abs(y2 - y) >= 0) || (Math.abs(y2 - y) >= 0 && Math.abs(x2 - x) < 2)))) {
-                if (vesselCommand.getThruster() == Thruster.LEFT && vessel.getSpeedX() > 0 ) {
-                    if (!(targetsToCapture.size() == 1 && (b < 3 && b >= 0))){
-                        vesselCommand.setThruster(Thruster.RIGHT);
-                    }
+            double stopx = Math.pow(vessel.getSpeedX(), 2) / 6;
+            double stopy = Math.pow(vessel.getSpeedY(), 2) / 6;
+            if ((a <= stopx && vessel.getSpeedX() != 0) || (b <= stopy && vessel.getSpeedY() != 0)) {
+                if (vesselCommand.getThruster() == Thruster.LEFT && vessel.getSpeedX() > 0) {
+                    vesselCommand.setThruster(Thruster.RIGHT);
                 } else if (vesselCommand.getThruster() == Thruster.RIGHT && vessel.getSpeedX() < 0) {
-                    if (!(targetsToCapture.size() == 1 && (b < 3 && b >= 0))){
-                        vesselCommand.setThruster(Thruster.LEFT);
-                    }
-                } else if (vesselCommand.getThruster() == Thruster.FRONT && vessel.getSpeedY() < 0 && targetsToCapture.size() > 1 && (targetsToCapture.get(1).getY() >= point.getY() - 50 || targetsToCapture.get(1).getY() == point.getY())) {
+                    vesselCommand.setThruster(Thruster.LEFT);
+                } else if (vesselCommand.getThruster() == Thruster.FRONT && vessel.getSpeedY() < 0 && targetsToCapture.size() > 1 && (targetsToCapture.get(1).getY() >= point.getY() - 50 || targetsToCapture.get(1).getY() == point.getY()) && y2 + 4 < raceArea.getHeight()) {
                     vesselCommand.setThruster(Thruster.BACK);
-                } else if (vesselCommand.getThruster() == Thruster.BACK && vessel.getSpeedY() > 0 && targetsToCapture.size() > 1 && (targetsToCapture.get(1).getY() <= point.getY() + 50 || targetsToCapture.get(1).getY() == point.getY())) {
+                } else if (vesselCommand.getThruster() == Thruster.BACK && vessel.getSpeedY() > 0 && targetsToCapture.size() > 1 && (targetsToCapture.get(1).getY() <= point.getY() + 50|| targetsToCapture.get(1).getY() == point.getY()) && y2 - 2 > 0) {
                     vesselCommand.setThruster(Thruster.FRONT);
+
                 }
-                vesselCommand.setThrusterLevel(ThrusterLevel.T4);
-            } else {
-                vesselCommand.setThrusterLevel(ThrusterLevel.T4);
             }
+            vesselCommand.setThrusterLevel(ThrusterLevel.T4);
         }
         place = vessel.getPosition();
         return vesselCommand;
